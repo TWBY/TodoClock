@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="pomodoroClock">
+      <div class="container">
+        <h2 class="title">{{ title }}</h2>
+        <div class="timer"><span>{{ minutes }}</span><span>:</span><span>{{ seconds }}</span></div>
+        <div id="buttons">
+          <button id="start" v-if="!timer" @click="startTimer"><i class="fas fa-play"></i></button>
+          <button id="stop" v-if="timer" @click="stopTimer"><i class="fas fa-pause-circle"></i></button>
+          <button id="reset" v-if="resetButton" @click="resetTimer"><i class="fas fa-undo"></i></button>
+        </div>
+      </div>
+      <checklist></checklist>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

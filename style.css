@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand");
+body {
+  height: 100%;
+  background-attachment: fixed;
+  color: #d1d8e0;
+  font-family: "Quicksand", bold;
+  margin: 0;
+  text-align: center; }
+
+#pomodoroClock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #b33939;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  width: 30%;
+  padding: 1%; }
+
+.controls {
+  margin-top: 5%;
+  font-size: 1em; }
+  .controls button {
+    color: #d1d8e0;
+    background: none;
+    border: 0;
+    outline: 0; }
+    .controls button :hover {
+      -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      transform: scale(1.1);
+      cursor: pointer; }
+
+#buttons button {
+  border: 0;
+  outline: 0;
+  font-size: 3em;
+  background: transparent;
+  color: #d1d8e0; }
+  #buttons button :hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    cursor: pointer; }
+
+.timer {
+  font-size: 6em; }
+
+.statistics {
+  margin-top: 2%; }
+
+.list-button {
+  position: relative;
+  display: block;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  transform: translate(-50%);
+  font-size: 2em;
+  color: #d1d8e0;
+  background: transparent;
+  border: 0;
+  outline: 0; }
+  .list-button :hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: pointer; }
+
+.list {
+  display: inline-block;
+  padding: .5em;
+  margin: 1em;
+  border: 1px dotted #d1d8e0; }
+  .list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left; }
+  .list li {
+    display: block; }
+
+.list_input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0.5em; }
+  .list_input input {
+    width: 100%; }
+
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  transition: all 1s ease-out; }
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0; }

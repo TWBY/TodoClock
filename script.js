@@ -2,47 +2,35 @@ const app = new Vue({
     el: '#pomodoroClock',
     data: {
         timer: null,
-        breakLength: 5,
-        sessionLength: 25,
-
-        // 總時數
+        breakLength: 0.1,
+        sessionLength: 0.2,
+        // 總時數,以秒數來作為單位
         totalTime: (this.sessionLength * 60),
+
         resetButton: false,
+
+        //在時間歸零時候判斷使用
         breakStatus: false,
         sessionCounter: 0,
         firstStart: true,
-        title: "Set your preferred periods!"
+        title: "Set your preferred periods!",
+
     },
     methods: {
-        //新增時間
-        // increment(value) {
-        //     if (value === "session") {
-        //         this.sessionLength++;
-        //         this.totalTime = (this.sessionLength * 60);
-        //     }
-        //     if (value === "break") {
-        //         this.breakLength++;
-        //     }
-        // },
-       //減少時間
-        // decrement(value) {
-        //     if (value === "session" && this.sessionLength > 1) {
-        //         this.sessionLength--;
-        //         this.totalTime = (this.sessionLength * 60);
-        //     }
-        //     if (value === "break" && this.breakLength > 1) {
-        //         this.breakLength--;
-        //     }
-        // },
         // 開始
         startTimer: function () {
             if (this.firstStart === true) {
                 this.totalTime = (this.sessionLength * 60);
                 this.firstStart = false;
             }
+            // this.totalTime = (this.sessionLength * 60);
             this.timer = setInterval(() => this.countdown(), 1000);
             this.resetButton = true;
-            this.title = "Work, work, work!"
+            if(this.breakStatus === true){
+                this.title = "break"
+            }else{
+                this.title = "work"
+            }
         },
         // 暫停
         stopTimer: function () {
@@ -64,19 +52,23 @@ const app = new Vue({
             return (time < 10 ? '0' : '') + time;
         },
 
-        // 計算次數（根據每一個 session）
+        // 倒數計時
         countdown: function () {
+            // 如果是工作狀態且秒數的時間已到
             if (this.totalTime < 1 && this.breakStatus === false) {
                 this.playSound();
-                this.sessionCounter++;
+                this.stopTimer(); //Pause the Timer after break
+                // this.sessionCounter++;
                 this.breakStatus = true;
                 this.title = 'Break time!';
                 this.totalTime = (this.breakLength * 60);
             }
+            // 如果是休息狀態且秒數的時間已到
             if (this.totalTime < 1 && this.breakStatus === true) {
                 this.playSound();
                 this.stopTimer(); //Pause the Timer after break
                 this.breakStatus = false;
+                this.firstStart = true;
                 this.title = 'Work, work, work!';
                 this.totalTime = (this.sessionLength * 60);
             }
@@ -84,23 +76,31 @@ const app = new Vue({
         },
         // 播放聲音
         playSound: function () {
-            var audio = new Audio("http://soundbible.com/mp3/Air Plane Ding-SoundBible.com-496729130.mp3");
-            audio.play();
+            // var audio = new Audio("Aluminum_Can_Crunch_Series.mp3");
+            // audio.play();      
         }
     },
     computed: {
         minutes: function () {
-            const minutes = Math.floor(this.totalTime / 60);
-            return this.padTime(minutes);
+            if (this.firstStart === true) {
+                return (this.sessionLength < 1) ? this.padTime(0) : this.sessionLength
+            }else{
+                const minutes = Math.floor(this.totalTime / 60);
+                return this.padTime(minutes);
+            }
+
         },
         seconds: function () {
-            const seconds = this.totalTime - (this.minutes * 60);
-            return this.padTime(seconds);
+            if (this.firstStart === true){
+                return this.padTime(this.sessionLength*60);    
+            }else{
+                const seconds = this.totalTime - (this.minutes * 60);
+                return this.padTime(seconds);
+            }
+
         }
     }
 })
-
-
 
 
 // var itemlist = [{
@@ -144,3 +144,5 @@ const app = new Vue({
 //     },
 // },
 // })
+
+Vue.config.devtools = true

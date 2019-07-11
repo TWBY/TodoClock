@@ -1,127 +1,97 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand');
-$font: 'Quicksand',
-bold;
-$color_mazarine: #273c75;
-$color_electro: #2f3640;
-$color_white: #d1d8e0;
-$color_red: #b33939;
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
-body {
-    height: 100%;
-    background-attachment: fixed;
-    // background-color: $color_electro;
-    color: $color_white;
-    font-family: $font;
-    margin: 0;
-    text-align: center;
+$color_blue_light: #E5F3FF;
+$color_blue_middle: #00A7FF;
+$color_blue_darken: #003164;
+$color_red_light: #FFEDF7;
+$color_red_middle: #FF4384;
+$color_white: #FFFFFF;
+
+
+@mixin size($w ,$h){
+    width: $w;
+    height: $h;
+}
+
+*{
+    position: relative;
+}
+    
+
+html, body {
+    @include size(100%, 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#app{
+    display: flex;
+}
+
+#listClock{
+    @include size(830px, 800px);
+    background-color: $color_red_light;
+}
+#functionchange{
+    @include size(450px, 800px);
+    background-color: $color_blue_darken;
 }
 
 #pomodoroClock {
-    position: absolute;
+    @include size(100%, 540px);
+    border: solid 1px black;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: $color-red;
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-    width: 30%;
-    padding: 1%;
-}
+    transform: translateY(-50%);
+    box-sizing: border-box;
+    right: -270px;
+    z-index: 100;
+    .container{
+        @include size(100%, 540px);
+        
+        .timer{
+            font-size: 176px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            position: absolute;
+            color: $color_red_middle;
 
-.controls {
-    margin-top: 5%;
-    font-size: 1em;
-
-    button {
-        color: $color_white;
-        background: none;
-        border: 0;
-        outline: 0;
-
-        :hover {
-            transform: scale(1.1);
-            cursor: pointer;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -200px
+        }
+        .countArea{
+            @include size(540px, 540px);
+            background-color: $color_red_middle;
+            border: solid 1px $color_red_middle;
+            box-sizing: border-box;
+            border-radius: 50%;
+            position: absolute;
+            right: 0%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
+    
 }
 
-#buttons {
-    button {
-        border: 0;
-        outline: 0;
-        font-size: 3em;
-        background: transparent;
-        color: $color_white;
 
-        :hover {
-            transform: scale(1.2);
-            cursor: pointer;
-        }
-    }
-}
-
-.timer {
-    font-size: 6em;
-}
-
-.statistics {
-    margin-top: 2%;
-}
-
-.list-button {
-    position: relative;
-    display: block;
-    left: 50%;
-    transform: translate(-50%);
-    font-size: 2em;
-    color: $color_white;
+button{
     background: transparent;
-    border: 0;
-    outline: 0;
-
-    :hover {
-        transform: scale(1.1);
-        cursor: pointer;
+    border:none;
+    outline:none;
+    @include size(96px, 96px);
+    img{
+        color: white;
+        @include size(100%, 100%);
     }
 }
 
-.list {
-    display: inline-block;
-    padding: .5em;
-    margin: 1em;
-    //background: black;
-    border: 1px dotted $color_white;
 
-    //box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.5);
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        text-align: left;
-    }
-
-    li {
-        display: block;
-    }
-}
-
-.list_input {
-    display: flex;
-    margin-bottom: 0.5em;
-
-    input {
-        width: 100%;
-    }
-}
-
-.fade-enter-active,
-.fade-leave-active {
-    transition: all 1s ease-out;
-}
-
-.fade-enter,
-.fade-leave-to
-
-/* .fade-leave-active below version 2.1.8 */
-    {
-    opacity: 0;
+i.material-icons{
+    font-size: 100px;
+    color:$color_white;
+    cursor: pointer;
 }

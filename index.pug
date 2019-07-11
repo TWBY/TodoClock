@@ -3,47 +3,46 @@ html(lang='en')
     head
         meta(charset='UTF-8')
         link(rel='stylesheet', href='style.css')
-        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.8.1/css/all.css', integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf', crossorigin='anonymous')
+        //- link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css', crossorigin='anonymous')
+        //- link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons.css", crossorigin='anonymous')
+        link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
         title Document
     body
-        #pomodoroClock
-            .container
-                h2.title {{ title }}
-                //- transition(name='fade')
-                .timer
-                    span {{ minutes }}
-                    span :
-                    span {{ seconds }}
-                #buttons
-                    button#start(v-if='!timer', @click='startTimer')
-                        i.fas.fa-play
-                    button#stop(v-if='timer', @click='stopTimer')
-                        i.fas.fa-pause-circle
-                    button#reset(v-if='resetButton', @click='resetTimer')
-                        i.fas.fa-undo
-                //- .statistics(v-if='firstStart === false')
-                //-     .d-flex.justify-content-center
-                //-         | Total Sessions: {{ sessionCounter }}
-                //- transition(name='fade')
-                //-     .controls(v-if='resetButton === false')
-                //-         .row
-                //-             .col-sm-6.length-wrapper
-                //-                 | Session Length
-                //-                 .d-flex.justify-content-center
-                //-                     button(@click='decrement("session")')
-                //-                         i.fas.fa-minus
-                //-                     |               {{ sessionLength }}min
-                //-                     button(@click='increment("session")')
-                //-                         i.fas.fa-plus
-                //-             .col-sm-6.length-wrapper
-                //-                 | Break Length
-                //-                 .d-flex.justify-content-center
-                //-                     button(@click='decrement("break")')
-                //-                         i.fas.fa-minus
-                //-                     |               {{ breakLength }}min
-                //-                     button(@click='increment("break")')
-                //-                         i.fas.fa-plus
-            checklist
+        #app
+            #listClock
+                #todolist
+                    .top
+                        h1.title Todo List
+                        h6.subtitle Get thing done, one item at a time
+                        hr.line
+                    li(v-for='(item, index) in items')
+                        input(:id="gernerateId(index)" type='checkbox', v-model='item.completed')
+                        label(:for="gernerateId(index)" v-bind:class='{ complete:item.completed }') {{item.text}}
+                        i.far.fa-trash-alt.btn(v-on:click='removeTodo(item)')
+
+                    .addlist
+                        h4 Add to the todo list
+                        .addbtn
+                            input.ipt(type='text', v-model='inputVaule', v-on='add')
+                            .btn(v-on:click='add') ADD ITEM
+                #pomodoroClock
+                    .container
+                        //- h2.title {{ title }}
+                        .timer
+                            span {{ minutes }}
+                            span :
+                            span {{ seconds }}
+                        .countArea
+                            #buttons
+                                button#start(v-if="!timer" @click='startTimer')
+                                    i.material-icons play_circle_outline
+                                button#stop(v-if="timer" @click='stopTimer')
+                                    i.material-icons pause_circle_outline
+                                button#reset(v-if="resetButton" @click='resetTimer')
+                                    i.material-icons autorenew
+            #functionchange
+
+
         //- #vue-todolist.todolistDiv
         //-     .top
         //-         h1.title Todo List

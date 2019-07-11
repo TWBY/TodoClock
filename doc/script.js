@@ -2,8 +2,8 @@ const app = new Vue({
     el: '#pomodoroClock',
     data: {
         timer: null,
-        breakLength: 0.1,
-        sessionLength: 0.2,
+        breakLength: 0.05,
+        sessionLength: 0.05,
         // 總時數,以秒數來作為單位
         totalTime: (this.sessionLength * 60),
 
@@ -103,46 +103,47 @@ const app = new Vue({
 })
 
 
-// var itemlist = [{
-//     text: 'Learn Vue Js',
-//     completed: false
-// },
-// {
-//     text: 'Code a todo list',
-//     completed: false
-// },
-// {
-//     text: 'Learn something else',
-//     completed: false
-// }
-// ]
+var itemlist = [{
+    text: 'Learn Vue Js',
+    completed: false
+},
+{
+    text: 'Code a todo list',
+    completed: false
+},
+{
+    text: 'Learn something else',
+    completed: false
+}
+]
 
-// var vm = new Vue({
-// el: '#vue-todolist',
-// data: {
-//     items: itemlist,
-//     inputVaule: ""
-// },
+var vm = new Vue({
+el: '#todolist',
+data: {
+    items: itemlist,
+    inputVaule: "",
+    breakStatus: app.breakStatus
+},
 
-// methods: {
-//     add: function () {
-//         if (this.inputVaule.length == 0) {
-//             alert("Input is require，please enter again");
-//         } else {
-//             this.items.push({
-//                 text: this.inputVaule,
-//                 completed: false
-//             });
-//             this.inputVaule = "";
-//         }
-//     },
-//     removeTodo: function (todo) {
-//         this.items.splice(this.items.indexOf(todo), 1)
-//     },
-//     gernerateId: function (index) {
-//         return "ID_" + index
-//     },
-// },
-// })
+methods: {
+    add: function () {
+        if (this.inputVaule.length == 0) {
+            alert("Input is require，please enter again");
+        } else {
+            this.items.push({
+                text: this.inputVaule,
+                completed: false
+            });
+            this.inputVaule = "";
+        }
+    },
+    removeTodo: function (todo) {
+        this.items.splice(this.items.indexOf(todo), 1)
+    },
+    gernerateId: function (index) {
+        return "ID_" + index
+    },
+},
+})
 
 Vue.config.devtools = true

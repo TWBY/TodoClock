@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+#pomodoroClock {
+  width: 100%;
+  height: 540px;
+  position: absolute;
+  top: 50%;
+  right: -270px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 100; }
+  #pomodoroClock .container {
+    width: 100%;
+    height: 540px; }
+    #pomodoroClock .container .timer {
+      font-size: 176px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      position: absolute;
+      color: #FF4384;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      left: -200px;
+      -webkit-transition-duration: 0.8s;
+      -o-transition-duration: 0.8s;
+      transition-duration: 0.8s; }
+    #pomodoroClock .container .countArea {
+      width: 540px;
+      height: 540px;
+      background-color: #FF4384;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      border-radius: 50%;
+      position: absolute;
+      right: 0%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-transition-duration: 0.8s;
+      -o-transition-duration: 0.8s;
+      transition-duration: 0.8s; }
+    #pomodoroClock .container .breakTime_bg {
+      background-color: #00A7FF;
+      -webkit-transition-duration: 0.8s;
+      -o-transition-duration: 0.8s;
+      transition-duration: 0.8s; }
+    #pomodoroClock .container .breakTime_color {
+      color: #00A7FF;
+      -webkit-transition-duration: 0.8s;
+      -o-transition-duration: 0.8s;
+      transition-duration: 0.8s; }
+
+button {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 96px;
+  height: 96px; }
+  button img {
+    color: white;
+    width: 100%;
+    height: 100%; }
+
+i.material-icons {
+  font-size: 100px;
+  color: #FFFFFF;
+  cursor: pointer; }
+
+.todolistDiv {
+  width: 445px;
+  height: 100%;
+  left: 85px; }
+
+.addArea {
+  width: 445px;
+  height: 56px;
+  top: 48px; }
+  .addArea input {
+    width: 100%;
+    height: 100%;
+    caret-color: #FF1744;
+    border: solid 0px; }
+    .addArea input:focus {
+      outline: none; }
+    .addArea input::-webkit-input-placeholder {
+      color: #FF4384;
+      font-family: Roboto;
+      font-weight: bold;
+      font-style: italic;
+      font-size: 16px;
+      padding-left: 16px; }
+  .addArea .add {
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #FF4384; }
+
+.task {
+  width: 445px;
+  height: 114.5px;
+  position: absolute;
+  bottom: 76px; }
+  .task li {
+    list-style-type: none;
+    padding-top: 3px;
+    padding-bottom: 10px;
+    margin-top: 9.25px;
+    font-size: 16px; }
+    .task li .container {
+      font-size: 16px;
+      color: #003164;
+      font-weight: bold;
+      font-family: Roboto;
+      padding-left: 28px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      /* Create a custom radio button */
+      /* Add a line */ }
+      .task li .container input {
+        /* Hide the browser's default radio button */
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0; }
+      .task li .container .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 16px;
+        height: 16px;
+        border: solid 1.5px #003164;
+        border-radius: 50%; }
+      .task li .container:hover input ~ .checkmark {
+        background-color: #003164; }
+      .task li .container:after {
+        content: "";
+        position: absolute;
+        top: 150%;
+        left: 0%;
+        background-color: #bdbdbd;
+        width: 445px;
+        height: 1px; }
+    .task li .material-icons {
+      font-size: 20px;
+      color: #003164;
+      right: 0px;
+      position: absolute; }
+    .task li .breakTime_bg {
+      background-color: #00A7FF;
+      -webkit-transition-duration: 0.8s;
+      -o-transition-duration: 0.8s;
+      transition-duration: 0.8s; }
+    .task li .breakTime_color {
+      color: #00A7FF;
+      -webkit-transition-duration: 0.8s;
+      -o-transition-duration: 0.8s;
+      transition-duration: 0.8s; }
+
+.functionList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 30px;
+  height: 220px;
+  position: absolute;
+  right: 85px;
+  top: 48px; }
+  .functionList .material-icons {
+    font-size: 36px; }
+
+.productName {
+  font-family: Futura;
+  font-weight: bold;
+  font-size: 24px;
+  color: #FFFFFF;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transform-origin: top right;
+  -ms-transform-origin: top right;
+  transform-origin: top right;
+  position: absolute;
+  right: 85px;
+  bottom: 48px; }
+
+* {
+  position: relative; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden; }
+
+#app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+#listClock {
+  width: 830px;
+  height: 800px;
+  background-color: #FFEDF7; }
+
+#functionchange {
+  width: 450px;
+  height: 800px;
+  background-color: #003164; }
+
+.breakTime_bg {
+  background-color: #00A7FF;
+  -webkit-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s; }
+
+.breakTime_color {
+  color: #00A7FF;
+  -webkit-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s; }

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+$color_blue_light: #E5F3FF;
+$color_blue_middle: #00A7FF;
+$color_blue_darken: #003164;
+$color_red_light: #FFEDF7;
+$color_red_middle: #FF4384;
+$color_white: #FFFFFF;
+
+$transition_time: 0.8s;
+
+@mixin size($w ,$h){
+    width: $w;
+    height: $h;
+}

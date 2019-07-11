@@ -2,37 +2,31 @@ doctype html
 html(lang='en')
     head
         meta(charset='UTF-8')
-        link(rel='stylesheet', href='style.css')
-        //- link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css', crossorigin='anonymous')
-        //- link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons.css", crossorigin='anonymous')
+        link(rel='stylesheet', href='doc/css/style.css')
         link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
         title Document
     body
         #app
             #listClock
-                #todolist
-                    .top
-                        h1.title Todo List
-                        h6.subtitle Get thing done, one item at a time
-                        hr.line
-                    li(v-for='(item, index) in items')
-                        input(:id="gernerateId(index)" type='checkbox', v-model='item.completed')
-                        label(:for="gernerateId(index)" v-bind:class='{ complete:item.completed }') {{item.text}}
-                        i.far.fa-trash-alt.btn(v-on:click='removeTodo(item)')
+                #todolist.todolistDiv
+                    .addArea
+                        input.ipt(type='text', v-model='inputVaule', v-on='add' placeholder="ADD A NEW MISSION")
+                        i.material-icons.add(v-on:click='add') add
+                    .task
+                        li(v-for='(item, index) in items')
+                            label.container(:for="gernerateId(index)" v-bind:class='{ complete:item.completed }') {{item.text}}
+                                input(:id="gernerateId(index)" type='radio', v-model='item.completed')
+                                span.checkmark(v-on:click='removeTodo(item)')
+                            i.material-icons(:class='{ breakTime_color: breakStatus }' ) play_circle_outline
 
-                    .addlist
-                        h4 Add to the todo list
-                        .addbtn
-                            input.ipt(type='text', v-model='inputVaule', v-on='add')
-                            .btn(v-on:click='add') ADD ITEM
                 #pomodoroClock
-                    .container
+                    .container.BreakTime
                         //- h2.title {{ title }}
-                        .timer
+                        .timer(:class='{ breakTime_color: breakStatus }' )
                             span {{ minutes }}
                             span :
                             span {{ seconds }}
-                        .countArea
+                        .countArea(:class='{ breakTime_bg: breakStatus }' )
                             #buttons
                                 button#start(v-if="!timer" @click='startTimer')
                                     i.material-icons play_circle_outline
@@ -41,23 +35,11 @@ html(lang='en')
                                 button#reset(v-if="resetButton" @click='resetTimer')
                                     i.material-icons autorenew
             #functionchange
-
-
-        //- #vue-todolist.todolistDiv
-        //-     .top
-        //-         h1.title Todo List
-        //-         h6.subtitle Get thing done, one item at a time
-        //-         hr.line
-        //-     li(v-for='(item, index) in items')
-        //-         input(:id="gernerateId(index)" type='checkbox', v-model='item.completed')
-        //-         label(:for="gernerateId(index)" v-bind:class='{ complete:item.completed }') {{item.text}}
-        //-         i.far.fa-trash-alt.btn(v-on:click='removeTodo(item)')
-
-        //-     .addlist
-        //-         h4 Add to the todo list
-        //-         .addbtn
-        //-             input.ipt(type='text', v-model='inputVaule', v-on='add')
-        //-             .btn(v-on:click='add') ADD ITEM
+                .functionList
+                    i.material-icons list
+                    i.material-icons assessment
+                    i.material-icons library_music
+                .productName POMODORO
         script(src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css")
         script(src='https://cdn.jsdelivr.net/npm/vue')
-        script(src='script.js')
+        script(src='doc/script.js')

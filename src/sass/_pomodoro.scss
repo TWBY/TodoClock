@@ -1,51 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
-
-$color_blue_light: #E5F3FF;
-$color_blue_middle: #00A7FF;
-$color_blue_darken: #003164;
-$color_red_light: #FFEDF7;
-$color_red_middle: #FF4384;
-$color_white: #FFFFFF;
-
-
-@mixin size($w ,$h){
-    width: $w;
-    height: $h;
-}
-
-*{
-    position: relative;
-}
-    
-
-html, body {
-    @include size(100%, 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-#app{
-    display: flex;
-}
-
-#listClock{
-    @include size(830px, 800px);
-    background-color: $color_red_light;
-}
-#functionchange{
-    @include size(450px, 800px);
-    background-color: $color_blue_darken;
-}
-
 #pomodoroClock {
     @include size(100%, 540px);
-    border: solid 1px black;
+    // border: solid 1px black;
+
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    box-sizing: border-box;
     right: -270px;
+    transform: translateY(-50%);
+    
+    box-sizing: border-box;
     z-index: 100;
     .container{
         @include size(100%, 540px);
@@ -59,12 +21,13 @@ html, body {
 
             top: 50%;
             transform: translateY(-50%);
-            left: -200px
+            left: -200px;
+
+            transition-duration: $transition_time;
         }
         .countArea{
             @include size(540px, 540px);
             background-color: $color_red_middle;
-            border: solid 1px $color_red_middle;
             box-sizing: border-box;
             border-radius: 50%;
             position: absolute;
@@ -72,10 +35,21 @@ html, body {
             display: flex;
             justify-content: center;
             align-items: center;
+
+            transition-duration: $transition_time;
+        }
+        .breakTime_bg{
+            background-color: $color_blue_middle;
+            transition-duration: $transition_time;
+        }
+        .breakTime_color{
+            color: $color_blue_middle;
+            transition-duration: $transition_time;
         }
     }
     
 }
+
 
 
 button{
